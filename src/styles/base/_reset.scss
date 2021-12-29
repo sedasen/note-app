@@ -11,20 +11,91 @@ html, body {
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
+  background-color: $wrapper-bg;
+  color: $default-text;
   font-size: 16px;
   font-family: "Anonymous Pro", monospace;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $default-text;
+  &.is-centered {
+    text-align: center;
+  }
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+a {
+  color: $blue;
+  text-decoration: none;
+  &:visited {
+    color: darken($blue, 30);
+  }
+  &:hover {
+    color: lighten($blue, 10);
+  }
+  &:focus {
+    outline: none;
+    text-decoration: underline;
+  }
+  &.is-yellow {
+    color: $yellow;
+    &:visited {
+      color: darken($yellow, 30);
+    }
+    &:hover {
+      color: lighten($yellow, 10);
+    }
+  }
 }
 
 button {
   margin: 0;
   padding: 5px 8px;
   border: none;
-  border-radius: 3px;
+  border-radius: $radius;
   background-color: $button-bg;
   color: $default-text;
   font-family: inherit;
   font-size: 1.25rem;
   font-weight: 700;
+  transition: background-color 250ms ease, color 250ms ease;
+  &.is-green {
+    background-color: $green;
+  }
+  &.is-red {
+    background-color: $red;
+  }
+  &:hover {
+    background-color: lighten($button-bg, 5);
+    &.is-green {
+      background-color: lighten($green, 5);
+      color: $white;
+    }
+    &.is-red {
+      background-color: lighten($red, 5);
+      color: $white;
+    }
+  }
+}
+
+input {
+  margin: 0;
+  padding: 7px 8px;
+  border: none;
+  border-radius: $radius;
+  background-color: $input-bg;
+  color: $default-text;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  &::placeholder {
+    color: darken($default-text, 30);
+  }
+  &:focus {
+    outline: none;
+  }
 }
