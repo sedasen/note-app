@@ -1,14 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface State {
-  documents: Document[];
-}
-
-interface Document {
-  title: string;
-  icon: string;
-  color?: string;
-  noteLines: string[];
+  documents: NoteApp.Document[];
 }
 
 /* ------------------- */
@@ -29,9 +22,10 @@ const slice = createSlice({
   name,
   initialState,
   reducers: {
-    createDocument: (state, action: PayloadAction<Document>) => {
+    createDocument: (state, action: PayloadAction<NoteApp.Document>) => {
       state.documents.push(action.payload);
     },
+    // TODO: @Seda, add all other actions
   },
 });
 
