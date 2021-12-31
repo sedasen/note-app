@@ -28,9 +28,10 @@ const slice = createSlice({
   name,
   initialState,
   reducers: {
-    createDocument: (state, action: PayloadAction<NoteDocument>) => {
+    createDocument: (state, action: PayloadAction<NoteApp.Document>) => {
       state.documents.push(action.payload);
     }
+    // TODO: @Seda, add all other actions
   }
 });
 
