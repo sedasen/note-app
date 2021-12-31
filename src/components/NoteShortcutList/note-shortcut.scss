@@ -1,0 +1,47 @@
+@use "@src/styles/utils/variables" as *;
+
+.note-shortcut-list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(40px, 125px));
+  gap: 20px;
+}
+
+.note-shortcut {
+  display: flex;
+  flex-direction: column;
+  &:hover {
+    .title {
+      color: $white;
+    }
+  }
+  .icon-wrapper {
+    .icon {
+      width: 100%;
+      height: 100%;
+      &.blue path {
+        fill: $blue;
+      }
+      &.green path {
+        fill: $green;
+      }
+      &.red path {
+        fill: $red;
+      }
+      &.orange path {
+        fill: $orange;
+      }
+      &.yellow path {
+        fill: $yellow;
+      }
+      &.purple path {
+        fill: $purple;
+      }
+    }
+  }
+  .title {
+    margin-top: 10px;
+    color: $default-text;
+    user-select: none;
+    cursor: pointer;
+  }
+}
