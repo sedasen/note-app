@@ -1,13 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface State {
-  documents: Document[];
+  documents: NoteDocument[];
 }
 
-interface Document {
+export interface NoteDocument {
   title: string;
-  icon: string;
-  color?: string;
+  iconColor: string;
   noteLines: string[];
 }
 
@@ -16,23 +15,23 @@ interface Document {
 const name = "notes";
 
 const initialState: State = {
-  documents: [],
+  documents: []
 };
 
 const persistConfig = (storage: any) => ({
   storage,
   key: name,
-  blacklist: [],
+  blacklist: []
 });
 
 const slice = createSlice({
   name,
   initialState,
   reducers: {
-    createDocument: (state, action: PayloadAction<Document>) => {
+    createDocument: (state, action: PayloadAction<NoteDocument>) => {
       state.documents.push(action.payload);
-    },
-  },
+    }
+  }
 });
 
 /* ------------------- */

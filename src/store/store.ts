@@ -9,7 +9,7 @@ import rootReducer from "@src/store/reducers.root";
 // Init Store
 const store = configureStore({
   reducer: rootReducer,
-  middleware: [],
+  middleware: []
 });
 const persistor = persistStore(store);
 
