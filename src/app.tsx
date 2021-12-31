@@ -1,18 +1,33 @@
+import LogoSVG from "@src/assets/Logo.svg";
+import ThemeChanger from "@src/components/ThemeChanger/themeChanger";
 import "@src/styles/index.scss";
+import HomeView from "@src/views/home";
+import NoteView from "@src/views/note";
+import NotesView from "@src/views/notes";
+import { Provider } from "react-redux";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { store } from "./store/store";
 
 function App() {
-  return <div className="wrapper">
-    <div className="container p-2">
-      <form>
-        <h1 className="is-centered">Zahir'in Vurdurduğu Form</h1>
-        <div className="input-group">
-          <label htmlFor="name">Zahir Kime Vurduruyor?</label>
-          <input id="name" type="text" placeholder="İpucu: Herkese" />
-        </div>
-        <button className="is-green">Kaydet</button>
-      </form>
-    </div>
-  </div>;
+  return (
+    <Router>
+        <Provider store={store}>
+          <ThemeChanger />
+          <div className="wrapper">
+            <h1 className="title">
+              <img src={LogoSVG} alt="Logo" />
+            </h1>
+            <div className="container">
+              <Routes>
+                <Route path="/" element={<HomeView />} />
+                <Route path="notes" element={<NotesView />} />
+                <Route path="notes/:id" element={<NoteView />} />
+              </Routes>
+            </div>
+          </div>
+        </Provider>
+    </Router>
+  );
 }
 
 export default App;
