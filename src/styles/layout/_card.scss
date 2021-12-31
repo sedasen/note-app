@@ -1,0 +1,7 @@
+@use "../utils/variables" as *;
+
+.card {
+  padding: 15px 25px;
+  border-radius: 3px;
+  background-color: $card-bg;
+}
