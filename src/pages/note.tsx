@@ -1,32 +1,23 @@
 import React from "react";
 
-import { connect, ConnectedProps } from "react-redux";
-import { RootState } from "@src/store/store";
-
 import { ReactComponent as ChevronLeftSVG } from "@src/assets/icons/chevron-left.svg";
 import { ReactComponent as PlusSVG } from "@src/assets/icons/plus.svg";
 import { ReactComponent as TrashSVG } from "@src/assets/icons/trash.svg";
 import { useCurrentNote } from "../hooks/useCurrentNote.hook";
 
-const mapStateToProps = (state: RootState) => ({});
-
-const connector = connect(mapStateToProps);
-
-type Props = ConnectedProps<typeof connector> & {};
-
-/* --------------- */
-
-function goBack() {
-  location.replace("/");
-}
-
-const NotePage = (props: Props) => {
+const NotePage = () => {
   const noteDocument = useCurrentNote();
 
-  if (noteDocument === null) {
+  function goBack() {
     location.replace("/");
+  }
+
+  if (noteDocument === null) {
+    goBack();
     return null;
   }
+
+  function createNewLine() {}
 
   return (
     <div id="note-view" className="view">
@@ -58,4 +49,4 @@ const NotePage = (props: Props) => {
   );
 };
 
-export default connector(NotePage);
+export default NotePage;

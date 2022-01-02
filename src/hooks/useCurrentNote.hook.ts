@@ -3,9 +3,12 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { RootState } from "@src/store/store";
 import { accessIndex } from "@src/util/accessor.util";
+import { usePathNames } from "./usePathNames.hook";
 
 export function useCurrentNote() {
-  const { id } = useParams();
+  const pathNames = usePathNames();
+
+  const id = accessIndex(pathNames, 1);
   const documentIndex = Math.floor(Number(id));
 
   const store = useSelector((state: RootState) => ({
@@ -14,8 +17,10 @@ export function useCurrentNote() {
 
   const noteDocument = React.useMemo(
     () => accessIndex(store.noteDocuments, documentIndex),
-    [store.noteDocuments.length]
+    [id, store.noteDocuments.length]
   );
 
-  return isNaN(documentIndex) ? null : noteDocument;
+  return accessIndex(pathNames, 0) !== "notes" || isNaN(documentIndex)
+    ? null
+    : noteDocument;
 }

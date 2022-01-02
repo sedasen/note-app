@@ -31,7 +31,7 @@ function App() {
         <div className="container">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/:id" element={<NotePage />} />
+            <Route path="/notes/:id" element={<NotePage />} />
           </Routes>
         </div>
       </div>

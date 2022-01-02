@@ -13,7 +13,7 @@ const NoteShortcutList = (props: Props) => {
   return (
     <div className="note-shortcut-list">
       {props.notes.map((note, i) => (
-        <Link to={`/${i}`} key={i}>
+        <Link to={`/notes/${i}`} key={i}>
           <div className="note-shortcut">
             <div className="icon-wrapper">
               <svg
