@@ -3,3 +3,45 @@
     margin-bottom: 10px;
   }
 }
+
+#note-view {
+  .note-line-list {
+    .note-line {
+      position: relative;
+      .content {
+      }
+      .line-id {
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        color: #373b41;
+        font-size: 2rem;
+        font-style: italic;
+        font-weight: 400;
+        user-select: none;
+        &:before {
+          content: "#";
+        }
+      }
+    }
+  }
+  .note-actions {
+    display: flex;
+    .spacer {
+      flex: 1 0;
+    }
+    #create-new {
+      display: flex;
+      align-items: center;
+      svg {
+        margin-right: 10px;
+      }
+    }
+    #remove-document {
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+}

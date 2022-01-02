@@ -1,5 +1,4 @@
-@use "../utils/variables" as *;
-@import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400&display=swap");
 
 * {
   box-sizing: border-box;
@@ -12,8 +11,8 @@ body {
 }
 
 body {
-  background-color: $wrapper-bg;
-  color: $default-text;
+  background-color: var(--wrapper-bg);
+  color: var(--default-text);
   font-size: 16px;
   font-family: "Anonymous Pro", monospace;
 }
@@ -24,7 +23,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: $default-text;
+  color: var(--default-text);
   &.is-centered {
     text-align: center;
   }
@@ -35,25 +34,25 @@ h1 {
 }
 
 a {
-  color: $blue;
+  color: var(--blue);
   text-decoration: none;
   &:visited {
-    color: darken($blue, 30);
+    color: var(--blue-darker);
   }
   &:hover {
-    color: lighten($blue, 10);
+    color: var(--blue-lighter);
   }
   &:focus {
     outline: none;
     text-decoration: underline;
   }
   &.is-yellow {
-    color: $yellow;
+    color: var(--yellow);
     &:visited {
-      color: darken($yellow, 30);
+      color: var(--yellow-darker);
     }
     &:hover {
-      color: lighten($yellow, 10);
+      color: var(--yellow-lighter);
     }
   }
 }
@@ -62,28 +61,31 @@ button {
   margin: 0;
   padding: 5px 8px;
   border: none;
-  border-radius: $radius;
-  background-color: $button-bg;
-  color: $default-text;
+  border-radius: var(--radius);
+  background-color: var(--button-bg);
+  color: var(--default-text);
   font-family: inherit;
   font-size: 1.25rem;
   font-weight: 700;
   transition: background-color 250ms ease, color 250ms ease;
   &.is-green {
-    background-color: $green;
+    background-color: var(--green);
   }
   &.is-red {
-    background-color: $red;
+    background-color: var(--red);
+  }
+  &.text-button {
+    background-color: transparent;
   }
   &:hover {
-    background-color: lighten($button-bg, 5);
+    background-color: var(--button-bg-lighter);
     &.is-green {
-      background-color: lighten($green, 5);
-      color: $white;
+      background-color: var(--green-lighter);
+      color: var(--white);
     }
     &.is-red {
-      background-color: lighten($red, 5);
-      color: $white;
+      background-color: var(--red-lighter);
+      color: var(--white);
     }
   }
 }
@@ -92,14 +94,14 @@ input {
   margin: 0;
   padding: 7px 8px;
   border: none;
-  border-radius: $radius;
-  background-color: $input-bg;
-  color: $default-text;
+  border-radius: var(--radius);
+  background-color: var(--input-bg);
+  color: var(--default-text);
   font-family: inherit;
   font-size: 1rem;
   font-weight: 400;
   &::placeholder {
-    color: darken($default-text, 30);
+    color: var(--default-text-darker);
   }
   &:focus {
     outline: none;

@@ -1,19 +1,44 @@
-$wrapper-bg: #090c10;
-$container-bg: #0d1117;
+:root {
+  --green: #238636;
+  --green-darker: darken(#238636, 30);
+  --green-lighter: lighten(#238636, 10);
 
-$card-bg: rgba(#c6ced6, 0.08);
+  --red: #d63532;
+  --red-darker: darken(#d63532, 30);
+  --red-lighter: lighten(#d63532, 10);
 
-$input-bg: #161b22;
-$button-bg: #21262d;
+  --orange: #f0883e;
+  --orange-darker: darken(#f0883e, 30);
+  --orange-lighter: lighten(#f0883e, 10);
 
-$radius: 3px;
+  --blue: #58a6ff;
+  --blue-darker: darken(#58a6ff, 30);
+  --blue-lighter: lighten(#58a6ff, 10);
 
-$default-text: #c6ced6;
-$white: #fff;
+  --yellow: #ffd983;
+  --yellow-darker: darken(#ffd983, 30);
+  --yellow-lighter: lighten(#ffd983, 10);
 
-$green: #238636;
-$red: #d63532;
-$orange: #f0883e;
-$blue: #58a6ff;
-$yellow: #ffd983;
-$purple: #8957e5;
+  --purple: #8957e5;
+  --purple-darker: darken(#8957e5, 30);
+  --purple-lighter: lighten(#8957e5, 10);
+
+  --wrapper-bg: #090c10;
+  --container-bg: #0d1117;
+
+  --card-bg: #1d2127;
+
+  --input-bg: #161b22;
+
+  --button-bg: #21262d;
+  --button-bg-darker: darken(#21262d, 5);
+  --button-bg-lighter: lighten(#21262d, 5);
+
+  --radius: 3px;
+
+  --default-text: #c6ced6;
+  --default-text-darker: darken(#c6ced6, 30);
+  --default-text-lighter: lighten(#c6ced6, 10);
+
+  --white: #fff;
+}
