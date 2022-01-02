@@ -1,31 +1,34 @@
 import LogoSVG from "@src/assets/Logo.svg";
-import ThemeChanger from "@src/components/ThemeChanger/themeChanger";
+import ThemeChanger from "@src/components/ThemeChanger/ThemeChanger";
+import HomePage from "@src/pages/home";
+import NotePage from "@src/pages/note";
+import { Route, Routes } from "react-router-dom";
+import AppWrapper from "./app.wrapper";
+import { useCurrentNote } from "./hooks/useCurrentNote.hook";
 import "@src/styles/index.scss";
-import HomeView from "@src/views/home";
-import NoteView from "@src/views/note";
-import { Provider } from "react-redux";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { store } from "./store/store";
 
 function App() {
+  const noteDocument = useCurrentNote();
+
   return (
-    <Router>
-      <Provider store={store}>
-        <ThemeChanger />
-        <div className="wrapper">
-          <h1 className="title">
-            <img src={LogoSVG} alt="Logo" />
-          </h1>
-          <div className="container">
-            <Routes>
-              <Route path="/" element={<HomeView />} />
-              <Route path="/:id" element={<NoteView />} />
-            </Routes>
-          </div>
+    <>
+      <ThemeChanger />
+
+      <div className="wrapper">
+        <h1 className="title">
+          {/* TODO: @Yasin, make logo reactive to the state */}
+          <img src={LogoSVG} alt="Logo" />
+        </h1>
+
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/:id" element={<NotePage />} />
+          </Routes>
         </div>
-      </Provider>
-    </Router>
+      </div>
+    </>
   );
 }
 
-export default App;
+export default AppWrapper(App);

@@ -1,16 +1,23 @@
 import "./note-shortcut.scss";
-import { NoteDocument } from "@src/store/duck/notes.duck";
 import { Link } from "react-router-dom";
 
-const NoteShortcutList = ({ notes }: { notes: NoteDocument[] }) => {
+interface Props {
+  notes: NoteApp.Document[];
+}
+
+const NoteShortcutList = (props: Props) => {
+  if (props.notes.length === 0) {
+    return <div>Henüz hiçbir dosya yok.</div>;
+  }
+
   return (
     <div className="note-shortcut-list">
-      {notes.map((note, i) => (
+      {props.notes.map((note, i) => (
         <Link to={`/${i}`} key={i}>
           <div className="note-shortcut">
             <div className="icon-wrapper">
               <svg
-                className={`icon ${note.iconColor}`}
+                className={`icon ${note.color}`}
                 viewBox="0 0 142 142"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

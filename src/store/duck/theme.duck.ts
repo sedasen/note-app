@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface State {
-  documents: NoteApp.Document[];
+  type: "light" | "dark";
 }
 
 /* ------------------- */
 
-const name = "notes";
+const name = "theme";
 
 const initialState: State = {
-  documents: [],
+  type: "dark",
 };
 
 const persistConfig = (storage: any) => ({
@@ -22,11 +22,9 @@ const slice = createSlice({
   name,
   initialState,
   reducers: {
-    createDocument: (state, action: PayloadAction<NoteApp.Document>) => {
-      state.documents.push(action.payload);
-    },
-    removeDocument: (state, action: PayloadAction<number>) => {
-      state.documents.splice(action.payload, 1);
+    switchTheme: (state, action: PayloadAction) => {
+      state.type = state.type === "dark" ? "light" : "dark";
+      // TODO: @Yasin, set root color variables
     },
   },
 });

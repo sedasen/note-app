@@ -1,16 +1,11 @@
 /// <reference types="vite/client" />
 
-declare namespace NoteApp {
-  enum ColorName {
-    RED = "red",
-    ORANGE = "orange",
-    BLUE = "blue",
-    YELLOW = "yellow",
-    PURPLE = "purple",
-    GREEN = "green",
-    WHITE = "white",
-  }
+declare module "*.svg" {
+  import React = require("react");
+  export const ReactComponent: React.FC<React.SVGProps<SVGSVGElement>>;
+}
 
+declare namespace NoteApp {
   interface Document {
     title: string;
     color: string;
