@@ -6,8 +6,8 @@ const NoteShortcutList = ({ notes }: { notes: NoteDocument[] }) => {
   return (
     <div className="note-shortcut-list">
       {notes.map((note, i) => (
-        <Link to={`/notes/${i}`}>
-          <div className="note-shortcut" key={i}>
+        <Link to={`/${i}`} key={i}>
+          <div className="note-shortcut">
             <div className="icon-wrapper">
               <svg
                 className={`icon ${note.iconColor}`}
