@@ -7,11 +7,6 @@
 .note-shortcut {
   display: flex;
   flex-direction: column;
-  &:hover {
-    .title {
-      color: var(--white);
-    }
-  }
   .icon-wrapper {
     .icon {
       width: 100%;
