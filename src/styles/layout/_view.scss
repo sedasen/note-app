@@ -5,6 +5,24 @@
 }
 
 #note-view {
+  position: relative;
+  #go-back {
+    position: absolute;
+    top: -10px;
+    left: -42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--default-text);
+    background-color: var(--button-bg);
+    &:hover {
+      background-color: #d6d6d6;
+      color: #171717;
+      svg path {
+        stroke: currentColor;
+      }
+    }
+  }
   .note-line-list {
     .note-line {
       position: relative;

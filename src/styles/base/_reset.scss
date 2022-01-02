@@ -67,7 +67,7 @@ button {
   font-family: inherit;
   font-size: 1.25rem;
   font-weight: 700;
-  transition: background-color 250ms ease, color 250ms ease;
+  transition: all 250ms ease, color 250ms ease;
   &.is-green {
     background-color: var(--green);
   }

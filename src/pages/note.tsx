@@ -16,6 +16,10 @@ type Props = ConnectedProps<typeof connector> & {};
 
 /* --------------- */
 
+function goBack() {
+  location.replace("/");
+}
+
 const NotePage = (props: Props) => {
   const noteDocument = useCurrentNote();
 
@@ -23,9 +27,12 @@ const NotePage = (props: Props) => {
     location.replace("/");
     return null;
   }
-  
+
   return (
     <div id="note-view" className="view">
+      <button id="go-back" onClick={goBack}>
+        <ChevronLeftSVG />
+      </button>
       <div className="note-line-list">
         {noteDocument?.noteLines.map((line, i) => (
           <div className="card note-line" key={i}>
