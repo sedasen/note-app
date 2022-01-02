@@ -25,7 +25,7 @@ function App() {
               alt={currentTheme}
             />
           )}
-          {!!noteDocument && noteDocument.title}
+          {!!noteDocument && noteDocument.document?.title}
         </h1>
 
         <div className="container">

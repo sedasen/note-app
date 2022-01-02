@@ -1,5 +1,5 @@
 export function isIndexAccessible(array: any[], index: number): boolean {
-  return index < 0 || index >= array.length;
+  return index >= 0 && index < array.length;
 }
 
 export function accessIndex<T>(
@@ -7,5 +7,5 @@ export function accessIndex<T>(
   index: number,
   defaultValue: T | null = null
 ) {
-  return isIndexAccessible(array, index) ? defaultValue : array[index];
+  return isIndexAccessible(array, index) ? array[index] : defaultValue;
 }

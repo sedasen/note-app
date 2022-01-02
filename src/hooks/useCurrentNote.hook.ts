@@ -15,12 +15,11 @@ export function useCurrentNote() {
     noteDocuments: state.notes.documents,
   }));
 
-  const noteDocument = React.useMemo(
-    () => accessIndex(store.noteDocuments, documentIndex),
-    [id, store.noteDocuments.length]
-  );
-
-  return accessIndex(pathNames, 0) !== "notes" || isNaN(documentIndex)
-    ? null
-    : noteDocument;
+  return {
+    documentIndex,
+    document:
+      accessIndex(pathNames, 0) !== "notes" || isNaN(documentIndex)
+        ? null
+        : accessIndex(store.noteDocuments, documentIndex),
+  };
 }
