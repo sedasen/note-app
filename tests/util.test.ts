@@ -1,6 +1,7 @@
 import { expect } from "chai";
 import { classes } from "@src/util/classes.util";
 import { accessIndex } from "@src/util/accessor.util";
+import { colorMap, ColorName } from "../src/util/colors.util";
 
 describe("utils", () => {
   it("should be able to construct class names with space delimiter.", () => {
@@ -19,5 +20,11 @@ describe("utils", () => {
     expect(accessIndex(array, 6, null)).equal(null);
     expect(accessIndex(array, 999, null)).equal(null);
     expect(accessIndex(array, 999, 999)).equal(999);
+  });
+
+  it("should contain all the colors in the lookup table", () => {
+    Object.values(ColorName).forEach((color) => {
+      expect(colorMap.has(color)).equal(true, "Missing color -> " + color);
+    });
   });
 });
