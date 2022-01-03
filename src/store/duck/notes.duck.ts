@@ -44,6 +44,14 @@ const slice = createSlice({
         noteDocument.noteLines.push(line);
       }
     },
+    cloneDocumentLine: (state, action: PayloadAction<[number, number]>) => {
+      const [documentIndex, lineIndex] = action.payload;
+      if (isIndexAccessible(state.documents, documentIndex)) {
+        const noteDocument = state.documents[documentIndex];
+        const line = noteDocument.noteLines[lineIndex];
+        noteDocument.noteLines.splice(lineIndex, 0, line);
+      }
+    },
     removeDocumentLine: (state, action: PayloadAction<[number, number]>) => {
       const [documentIndex, lineIndex] = action.payload;
       if (isIndexAccessible(state.documents, documentIndex)) {
