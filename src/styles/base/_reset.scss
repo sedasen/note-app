@@ -81,13 +81,14 @@ button {
     background-color: transparent;
   }
   &:hover {
-    background-color: var(--button-bg-lighter);
+    background-color: var(--button-bg);
+    color: var(--white);
     &.is-green {
-      background-color: var(--green-lighter);
+      background-color: var(--green);
       color: var(--white);
     }
     &.is-red {
-      background-color: var(--red-lighter);
+      background-color: var(--red);
       color: var(--white);
     }
   }

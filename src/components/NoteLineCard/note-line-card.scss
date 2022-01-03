@@ -1,6 +1,12 @@
 .note-line {
   position: relative;
   margin-bottom: 10px;
+  &:hover {
+    .actions {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
   input.content {
     width: 100%;
   }
@@ -21,6 +27,42 @@
     user-select: none;
     &:before {
       content: "#";
+    }
+  }
+  .actions {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 2;
+    button.action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 5px 8px;
+      border-radius: 0;
+      box-shadow: 0 0 15px -5px rgba(#000, 0.6);
+      &:first-child {
+        border-radius: 10px 0 0 10px;
+      }
+      &:last-child {
+        border-radius: 0 10px 10px 0;
+      }
+      svg {
+        width: 16px;
+        height: 16px;
+        path {
+          stroke: currentColor;
+        }
+      }
+    }
+    button#duplicate-button {
+    }
+    button#remove-button {
     }
   }
 }

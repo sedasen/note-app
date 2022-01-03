@@ -1,4 +1,6 @@
 import React from "react";
+import { ReactComponent as CopySVG } from "@src/assets/icons/copy.svg";
+import { ReactComponent as TrashSVG } from "@src/assets/icons/trash.svg";
 import { classes } from "@src/util/classes.util";
 import "./note-line-card.scss";
 
@@ -44,6 +46,15 @@ const NoteLineCard = (props: Props) => {
         onClick={onContentClick}
       >
         {props.text || "Düzenlemek için tıklayınız..."}
+      </div>
+
+      <div className="actions">
+        <button id="duplicate-button" className="action">
+          <CopySVG />
+        </button>
+        <button id="remove-button" className="action is-red">
+          <TrashSVG />
+        </button>
       </div>
 
       <div className="line-id">{props.index + 1}</div>
