@@ -30,6 +30,13 @@ const slice = createSlice({
     removeDocument: (state, action: PayloadAction<number>) => {
       state.documents.splice(action.payload, 1);
     },
+    setDocumentTitle: (state, action: PayloadAction<[number, string]>) => {
+      const [documentIndex, title] = action.payload;
+      if (isIndexAccessible(state.documents, documentIndex)) {
+        const noteDocument = state.documents[documentIndex];
+        noteDocument.title = title;
+      }
+    },
     addDocumentLine: (state, action: PayloadAction<[number, string]>) => {
       const [documentIndex, line] = action.payload;
       if (isIndexAccessible(state.documents, documentIndex)) {
