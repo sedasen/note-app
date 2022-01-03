@@ -19,7 +19,7 @@ function App() {
 
       <div className="wrapper">
         <h1 className="title">
-          {!noteDocument && (
+          {!noteDocument.document && (
             <img
               src={currentTheme === "dark" ? LogoSVGDark : LogoSVGLight}
               alt={currentTheme}

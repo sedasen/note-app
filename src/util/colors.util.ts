@@ -12,7 +12,8 @@ export enum ColorName {
   CARD = "card-bg",
   INPUT = "input-bg",
   BUTTON = "button-bg",
-  TEXT = "default-text"
+  TEXT = "default-text",
+  INACTIVE_TEXT = "inactive-text",
 }
 
 export const colorMap = new Map<ColorName, { dark: string; light: string }>();
@@ -32,6 +33,7 @@ colorMap.set(ColorName.CARD, { dark: "#1d2127", light: "#F4F5F7" });
 colorMap.set(ColorName.INPUT, { dark: "#161b22", light: "#F7F8FA" });
 colorMap.set(ColorName.BUTTON, { dark: "#21262d", light: "#F4F5F7" });
 colorMap.set(ColorName.TEXT, { dark: "#c6ced6", light: "#24292E" });
+colorMap.set(ColorName.INACTIVE_TEXT, { dark: "#5b6064", light: "#91989e" });
 
 // Fetching logic with WHITE fallback
 export function getColor(color: ColorName, theme: "light" | "dark") {

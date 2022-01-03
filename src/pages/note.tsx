@@ -10,17 +10,15 @@ import { ReactComponent as ChevronLeftSVG } from "@src/assets/icons/chevron-left
 import { ReactComponent as PlusSVG } from "@src/assets/icons/plus.svg";
 import { ReactComponent as TrashSVG } from "@src/assets/icons/trash.svg";
 import { useCurrentNote } from "../hooks/useCurrentNote.hook";
+import NoteLineCard from "../components/NoteLineCard/NoteLineCard";
 
 const mapStateToProps = (state: RootState) => ({});
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   createLine: (documentIndex: number) =>
-    dispatch(
-      NoteActions.addDocumentLine([
-        documentIndex,
-        "Düzenlemek için tıklayınız...",
-      ])
-    ),
+    dispatch(NoteActions.addDocumentLine([documentIndex, ""])),
+  editLine: (documentIndex: number, lineIndex: number, line: string) =>
+    dispatch(NoteActions.editDocumentLine([documentIndex, lineIndex, line])),
 });
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -52,11 +50,14 @@ const NotePage = (props: Props) => {
         <ChevronLeftSVG />
       </button>
       <div className="note-line-list">
-        {noteDocument.document?.noteLines.map((line, i) => (
-          <div className="card note-line" key={i}>
-            <div className="content">{line}</div>
-            <div className="line-id">{i + 1}</div>
-          </div>
+        {React.Children.map(noteDocument.document?.noteLines, (line, i) => (
+          <NoteLineCard
+            text={line}
+            index={i}
+            onChange={(e) => {
+              props.editLine(noteDocument.documentIndex, i, e.target.value);
+            }}
+          />
         ))}
       </div>
 

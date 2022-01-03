@@ -24,24 +24,6 @@
     }
   }
   .note-line-list {
-    .note-line {
-      position: relative;
-      .content {
-      }
-      .line-id {
-        position: absolute;
-        right: 0px;
-        bottom: 0px;
-        color: rgba(#000, 0.5);
-        font-size: 2rem;
-        font-style: italic;
-        font-weight: 400;
-        user-select: none;
-        &:before {
-          content: "#";
-        }
-      }
-    }
   }
   .note-actions {
     display: flex;
