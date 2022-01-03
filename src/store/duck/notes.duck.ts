@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { isIndexAccessible } from "@src/util/accessor.util";
+import { ColorName } from "../../util/colors.util";
 import { PersistConfigSupplier } from "../store";
 
 interface State {
@@ -35,6 +36,13 @@ const slice = createSlice({
       if (isIndexAccessible(state.documents, documentIndex)) {
         const noteDocument = state.documents[documentIndex];
         noteDocument.title = title;
+      }
+    },
+    setDocumentColor: (state, action: PayloadAction<[number, ColorName]>) => {
+      const [documentIndex, color] = action.payload;
+      if (isIndexAccessible(state.documents, documentIndex)) {
+        const noteDocument = state.documents[documentIndex];
+        noteDocument.color = color;
       }
     },
     addDocumentLine: (state, action: PayloadAction<[number, string]>) => {

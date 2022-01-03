@@ -5,12 +5,15 @@ import { RootState } from "@src/store/store";
 import { Dispatch } from "@reduxjs/toolkit";
 import { actions as NoteActions } from "@src/store/duck/notes.duck";
 import { connect, ConnectedProps } from "react-redux";
+import { ColorName } from "../../util/colors.util";
 
 const mapStateToProps = (state: RootState) => ({});
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   setTitle: (documentIndex: number, title: string) =>
-    dispatch(NoteActions.setDocumentTitle([documentIndex, title]))
+    dispatch(NoteActions.setDocumentTitle([documentIndex, title])),
+  setColor: (documentIndex: number, color: ColorName) =>
+    dispatch(NoteActions.setDocumentColor([documentIndex, color])),
 });
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -30,15 +33,32 @@ const NoteShortcutElement = (props: Props) => {
     setEditing(true);
   }
 
+  function onEditAccept() {
+    setEditing(false);
+  }
+
+  function onTitleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    props.setTitle(props.documentIndex, event.target.value);
+  }
+
+  function onColorPick(color: ColorName) {
+    return function () {
+      props.setColor(props.documentIndex, color);
+    };
+  }
+
   return (
     <div className="note-shortcut" onContextMenu={onRightClick}>
-      <div className="color-picker">
-        <div className="color blue"></div>
-        <div className="color green"></div>
-        <div className="color red"></div>
-        <div className="color orange"></div>
-        <div className="color yellow"></div>
-        <div className="color purple"></div>
+      <div
+        className="color-picker"
+        style={!editing ? { display: "none" } : undefined}
+      >
+        <div className="color blue" onClick={onColorPick(ColorName.BLUE)} />
+        <div className="color green" onClick={onColorPick(ColorName.GREEN)} />
+        <div className="color red" onClick={onColorPick(ColorName.RED)} />
+        <div className="color orange" onClick={onColorPick(ColorName.ORANGE)} />
+        <div className="color yellow" onClick={onColorPick(ColorName.YELLOW)} />
+        <div className="color purple" onClick={onColorPick(ColorName.PURPLE)} />
       </div>
       <Link to={`/notes/${props.documentIndex}`}>
         <div className="icon-wrapper">
@@ -56,25 +76,24 @@ const NoteShortcutElement = (props: Props) => {
           </svg>
         </div>
       </Link>
-      {editing ? (
-        <div className="input-wrapper">
-          <input
-            type="text"
-            style={!editing ? { display: "none" } : undefined}
-            value={props.document.title}
-          />
-          <button id="save-button">
-            <CheckSVG />
-          </button>
-        </div>
-      ) : (
-        <div
-          className="title"
-          style={editing ? { display: "none" } : undefined}
+      <div className="input-wrapper">
+        <input
+          type="text"
+          style={!editing ? { display: "none" } : undefined}
+          value={props.document.title}
+          onChange={onTitleChange}
+        />
+        <button
+          id="save-button"
+          style={!editing ? { display: "none" } : undefined}
+          onClick={onEditAccept}
         >
-          {props.document.title}
-        </div>
-      )}
+          <CheckSVG />
+        </button>
+      </div>
+      <div className="title" style={editing ? { display: "none" } : undefined}>
+        {props.document.title}
+      </div>
     </div>
   );
 };
