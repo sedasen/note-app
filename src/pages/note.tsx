@@ -15,10 +15,12 @@ import NoteLineCard from "../components/NoteLineCard/NoteLineCard";
 const mapStateToProps = (state: RootState) => ({});
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
+  removeDocument: (documentIndex: number) =>
+    dispatch(NoteActions.removeDocument(documentIndex)),
   createLine: (documentIndex: number) =>
     dispatch(NoteActions.addDocumentLine([documentIndex, ""])),
   editLine: (documentIndex: number, lineIndex: number, line: string) =>
-    dispatch(NoteActions.editDocumentLine([documentIndex, lineIndex, line]))
+    dispatch(NoteActions.editDocumentLine([documentIndex, lineIndex, line])),
 });
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -40,8 +42,19 @@ const NotePage = (props: Props) => {
     return null;
   }
 
+  function deleteDocument() {
+    props.removeDocument(noteDocument.documentIndex);
+    goBack();
+  }
+
   function createNewLine() {
     props.createLine(noteDocument.documentIndex);
+  }
+
+  function onLineChange(lineIndex: number) {
+    return function (event: React.ChangeEvent<HTMLInputElement>) {
+      props.editLine(noteDocument.documentIndex, lineIndex, event.target.value);
+    };
   }
 
   return (
@@ -51,15 +64,13 @@ const NotePage = (props: Props) => {
           <ChevronLeftSVG />
         </button>
         <div className="note-line-list">
-          {React.Children.map(noteDocument.document?.noteLines, (line, i) => (
-            <NoteLineCard
-              text={line}
-              index={i}
-              onChange={e => {
-                props.editLine(noteDocument.documentIndex, i, e.target.value);
-              }}
-            />
-          ))}
+          {noteDocument.document?.noteLines.length === 0 ? (
+            <div>Henüz hiçbir kart yok.</div>
+          ) : (
+            React.Children.map(noteDocument.document?.noteLines, (line, i) => (
+              <NoteLineCard text={line} index={i} onChange={onLineChange(i)} />
+            ))
+          )}
         </div>
       </main>
       <footer className="actions note-actions">
@@ -70,7 +81,11 @@ const NotePage = (props: Props) => {
 
         <div className="spacer"></div>
 
-        <button id="remove-document" className="text-button">
+        <button
+          id="remove-document"
+          className="text-button"
+          onClick={deleteDocument}
+        >
           <TrashSVG />
         </button>
       </footer>

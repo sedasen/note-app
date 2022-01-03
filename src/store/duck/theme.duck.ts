@@ -13,7 +13,7 @@ const initialState: State = {
   type: "dark",
 };
 
-const persistConfig: PersistConfigSupplier = (storage) => ({
+const persistConfig: PersistConfigSupplier<State> = (storage) => ({
   storage,
   key: name,
   blacklist: [],

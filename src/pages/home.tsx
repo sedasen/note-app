@@ -37,8 +37,8 @@ const HomePage = (props: Props) => {
       <main className="main">
         <NoteShortcutList notes={props.noteDocuments} />
       </main>
+      
       <footer className="actions">
-        {/* @TODO: @Yasin; Create note button, with a blank white note document */}
         <button onClick={createBlankDocument}>Yeni Bir Dosya Ekle</button>
       </footer>
     </div>
