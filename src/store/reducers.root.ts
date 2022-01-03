@@ -1,6 +1,5 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
-import { PersistConfig } from "redux-persist/es/types";
 import storage from "redux-persist/lib/storage";
 
 // Ducks

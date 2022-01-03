@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { isIndexAccessible } from "@src/util/accessor.util";
+import { PersistConfigSupplier } from "../store";
 
 interface State {
   documents: NoteApp.Document[];
@@ -13,7 +14,7 @@ const initialState: State = {
   documents: [],
 };
 
-const persistConfig = (storage: any) => ({
+const persistConfig: PersistConfigSupplier = (storage) => ({
   storage,
   key: name,
   blacklist: [],

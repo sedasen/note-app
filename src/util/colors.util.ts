@@ -40,3 +40,10 @@ export function getColor(color: ColorName, theme: "light" | "dark") {
   const colorName = colorMap.get(color) ?? colorMap.get(ColorName.WHITE)!;
   return colorName[theme];
 }
+
+export function updateThemeColors(theme: NoteApp.Theme) {
+  const root = document.documentElement;
+  colorMap.forEach((color, key) => {
+    root.style.setProperty(`--${key}`, color[theme]);
+  });
+}
