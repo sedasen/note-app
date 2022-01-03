@@ -6,6 +6,8 @@ declare module "*.svg" {
 }
 
 declare namespace NoteApp {
+  type Theme = "light" | "dark";
+
   interface Document {
     title: string;
     color: string;

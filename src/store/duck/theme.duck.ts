@@ -1,8 +1,8 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { colorMap, getColor } from "@src/util/colors.util";
+import { createSlice } from "@reduxjs/toolkit";
+import { PersistConfigSupplier } from "../store";
 
 interface State {
-  type: "light" | "dark";
+  type: NoteApp.Theme;
 }
 
 /* ------------------- */
@@ -10,29 +10,23 @@ interface State {
 const name = "theme";
 
 const initialState: State = {
-  type: "dark"
+  type: "dark",
 };
 
-const persistConfig = (storage: any) => ({
+const persistConfig: PersistConfigSupplier = (storage) => ({
   storage,
   key: name,
-  blacklist: []
+  blacklist: [],
 });
 
 const slice = createSlice({
   name,
   initialState,
   reducers: {
-    switchTheme: (state, action: PayloadAction) => {
+    switchTheme: (state) => {
       state.type = state.type === "dark" ? "light" : "dark";
-
-      const root = document.documentElement;
-
-      colorMap.forEach((color, key) => {
-        root.style.setProperty(`--${key}`, getColor(key, state.type));
-      });
-    }
-  }
+    },
+  },
 });
 
 /* ------------------- */
