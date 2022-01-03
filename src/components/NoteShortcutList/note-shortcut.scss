@@ -5,6 +5,7 @@
 }
 
 .note-shortcut {
+  position: relative;
   display: flex;
   flex-direction: column;
   .icon-wrapper {
@@ -36,5 +37,61 @@
     color: var(--default-text);
     user-select: none;
     cursor: pointer;
+  }
+  .input-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    input {
+      width: calc(100% - 30px);
+    }
+    button#save-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      svg {
+        width: 18px;
+        height: 18px;
+        path {
+          stroke: currentColor;
+        }
+      }
+    }
+  }
+  .color-picker {
+    position: absolute;
+    top: 5px;
+    right: -20px;
+    display: flex;
+    flex-direction: column;
+    .color {
+      border-radius: 3px;
+      width: 16px;
+      height: 16px;
+      background-color: var(--black);
+      &.blue {
+        background-color: var(--blue);
+      }
+      &.green {
+        background-color: var(--green);
+      }
+      &.red {
+        background-color: var(--red);
+      }
+      &.orange {
+        background-color: var(--orange);
+      }
+      &.yellow {
+        background-color: var(--yellow);
+      }
+      &.purple {
+        background-color: var(--purple);
+      }
+      &:not(:first-child) {
+        margin-top: 5px;
+      }
+    }
   }
 }
