@@ -68,7 +68,12 @@ const NotePage = (props: Props) => {
             <div>Henüz hiçbir kart yok.</div>
           ) : (
             React.Children.map(noteDocument.document?.noteLines, (line, i) => (
-              <NoteLineCard text={line} index={i} onChange={onLineChange(i)} />
+              <NoteLineCard
+                text={line}
+                documentIndex={noteDocument.documentIndex}
+                lineIndex={i}
+                onChange={onLineChange(i)}
+              />
             ))
           )}
         </div>
