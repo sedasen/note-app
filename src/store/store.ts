@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { persistStore } from "redux-persist";
-import { PersistConfig } from "redux-persist/es/types";
+import { PersistConfig, Storage } from "redux-persist/es/types";
 
 import rootReducer from "@src/store/reducers.root";
 
@@ -28,4 +28,4 @@ if (import.meta.hot) {
 // Exports
 export { store, persistor };
 export type RootState = ReturnType<typeof store.getState>;
-export type PersistConfigSupplier = (storage: any) => PersistConfig<any>;
+export type PersistConfigSupplier<S> = (storage: Storage) => PersistConfig<S>;

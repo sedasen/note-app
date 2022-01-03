@@ -14,7 +14,7 @@ const initialState: State = {
   documents: [],
 };
 
-const persistConfig: PersistConfigSupplier = (storage) => ({
+const persistConfig: PersistConfigSupplier<State> = (storage) => ({
   storage,
   key: name,
   blacklist: [],
