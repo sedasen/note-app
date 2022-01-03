@@ -9,12 +9,12 @@ import { actions as NoteActions } from "@src/store/duck/notes.duck";
 
 const mapStateToProps = (state: RootState) => ({
   theme: state.theme.type,
-  noteDocuments: state.notes.documents,
+  noteDocuments: state.notes.documents
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   insertDocument: (noteDocument: NoteApp.Document) =>
-    dispatch(NoteActions.createDocument(noteDocument)),
+    dispatch(NoteActions.createDocument(noteDocument))
 });
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -27,17 +27,20 @@ const HomePage = (props: Props) => {
   function createBlankDocument() {
     props.insertDocument({
       title: "İsimsiz Not Kağıdı",
-      color: ColorName.WHITE,
-      noteLines: [],
+      color: ColorName.BLUE,
+      noteLines: []
     });
   }
 
   return (
-    <div className="view">
-      <NoteShortcutList notes={props.noteDocuments} />
-
-      {/* @TODO: @Yasin; Create note button, with a blank white note document */}
-      <button onClick={createBlankDocument}>Yeni Bir Dosya Ekle</button>
+    <div id="home-view" className="view">
+      <main className="main">
+        <NoteShortcutList notes={props.noteDocuments} />
+      </main>
+      <footer className="actions">
+        {/* @TODO: @Yasin; Create note button, with a blank white note document */}
+        <button onClick={createBlankDocument}>Yeni Bir Dosya Ekle</button>
+      </footer>
     </div>
   );
 };

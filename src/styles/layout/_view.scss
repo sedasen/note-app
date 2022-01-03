@@ -1,6 +1,28 @@
 .view {
-  .card {
-    margin-bottom: 10px;
+  height: 100%;
+  .main {
+    height: calc(100% - 60px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #090c10;
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background: #191c21;
+    }
+  }
+  .actions {
+    display: flex;
+    margin-top: 10px;
+    height: 50px;
+    .spacer {
+      flex: 1 0;
+    }
   }
 }
 
@@ -24,12 +46,9 @@
     }
   }
   .note-line-list {
+    padding-right: 10px;
   }
   .note-actions {
-    display: flex;
-    .spacer {
-      flex: 1 0;
-    }
     #create-new {
       display: flex;
       align-items: center;

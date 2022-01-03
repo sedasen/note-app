@@ -15,9 +15,8 @@ function App() {
 
   return (
     <>
-      <ThemeChanger />
-
       <div className="wrapper">
+        <ThemeChanger />
         <h1 className="title">
           {!noteDocument.document && (
             <img

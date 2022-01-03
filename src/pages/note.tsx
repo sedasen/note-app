@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => ({
   createLine: (documentIndex: number) =>
     dispatch(NoteActions.addDocumentLine([documentIndex, ""])),
   editLine: (documentIndex: number, lineIndex: number, line: string) =>
-    dispatch(NoteActions.editDocumentLine([documentIndex, lineIndex, line])),
+    dispatch(NoteActions.editDocumentLine([documentIndex, lineIndex, line]))
 });
 
 const connector = connect(mapStateToProps, mapDispatchToProps);
@@ -46,22 +46,23 @@ const NotePage = (props: Props) => {
 
   return (
     <div id="note-view" className="view">
-      <button id="go-back" onClick={goBack}>
-        <ChevronLeftSVG />
-      </button>
-      <div className="note-line-list">
-        {React.Children.map(noteDocument.document?.noteLines, (line, i) => (
-          <NoteLineCard
-            text={line}
-            index={i}
-            onChange={(e) => {
-              props.editLine(noteDocument.documentIndex, i, e.target.value);
-            }}
-          />
-        ))}
-      </div>
-
-      <footer className="note-actions">
+      <main className="main">
+        <button id="go-back" onClick={goBack}>
+          <ChevronLeftSVG />
+        </button>
+        <div className="note-line-list">
+          {React.Children.map(noteDocument.document?.noteLines, (line, i) => (
+            <NoteLineCard
+              text={line}
+              index={i}
+              onChange={e => {
+                props.editLine(noteDocument.documentIndex, i, e.target.value);
+              }}
+            />
+          ))}
+        </div>
+      </main>
+      <footer className="actions note-actions">
         <button id="create-new" className="text-button" onClick={createNewLine}>
           <PlusSVG />
           Yeni bir kart ekle
