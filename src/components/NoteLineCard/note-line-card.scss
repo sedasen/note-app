@@ -1,9 +1,13 @@
 .note-line {
   position: relative;
+  margin-bottom: 10px;
+  input.content {
+    width: 100%;
+  }
   .content {
     &--empty {
       font-style: italic;
-      color: var(--inactive-text)
+      color: var(--inactive-text);
     }
   }
   .line-id {
