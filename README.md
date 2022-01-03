@@ -10,3 +10,9 @@ Note-app bir not defteri uygulamasıdır. Kullanıcılar özelleştirilebilir do
 
 Note-app, yazılım kalite güvencesi ve testi dersi kazanımlarını pekiştirmek amacıyla test edilmek üzere geliştirilmiş bir uygulamadır.
 
+## Kurulum
+
+- `yarn install`: Projede kullanılan 3. parti uygulamaları kurar.
+
+- `yarn dev`: Projeyi yerel ağda (3000 port'unda) çalıştırır.
+- `yarn test`: Proje içerisindeki testleri çalıştırır.
