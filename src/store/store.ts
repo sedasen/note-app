@@ -20,7 +20,7 @@ const persistor = persistStore(store);
 // Persistor HMR
 if (import.meta.hot) {
   import.meta.hot.accept("store/reducers.root", () => {
-    const nextRootReducer = require("store/reducers.root");
+    const nextRootReducer = require("./store/reducers.root");
     store.replaceReducer(nextRootReducer);
   });
 }
