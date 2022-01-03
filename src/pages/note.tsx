@@ -64,9 +64,13 @@ const NotePage = (props: Props) => {
           <ChevronLeftSVG />
         </button>
         <div className="note-line-list">
-          {React.Children.map(noteDocument.document?.noteLines, (line, i) => (
-            <NoteLineCard text={line} index={i} onChange={onLineChange(i)} />
-          ))}
+          {noteDocument.document?.noteLines.length === 0 ? (
+            <div>Henüz hiçbir kart yok.</div>
+          ) : (
+            React.Children.map(noteDocument.document?.noteLines, (line, i) => (
+              <NoteLineCard text={line} index={i} onChange={onLineChange(i)} />
+            ))
+          )}
         </div>
       </main>
       <footer className="actions note-actions">
